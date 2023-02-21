@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Coding Quiz Challenge</title>
+  </head>
+  <body>
+    <header>
+      <div id="highscore">View High Scores</div>
+      <div id="timer">
+        <p>Time:</p>
+        <p id="countdown"></p>
+      </div>
+    </header>
+    <div id="quizContent">
+      <section id="quizStart">
+        <h1>Coding Quiz Challenge</h1>
+        <div id="startMessage">Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</div>
+        <button type="button" id="startQuizButton">Start Quiz</button>
+      </section>
+      <section id="quiz">
+        <div id="quizWrapper">
+          <h1 id="questions">Commonly used data types DO Not Include: </h1>
+          <div id="answers">
+            <button type="button">1. strings</button>
+            <button type="button">2. booleans</button>
+            <button type="button">3. alerts</button>
+            <button type="button">4. numbers</button>
+          </div>
+          <hr></hr>
+          <div id="results">
+            <p id="answerResult">Correct!</p>
+          </div>
+        </div>
+      </section>
+      <section id="quizFinished">
+        <h1>All done!</h1>
+        <p id="finalScore">Your final score is 22</p>
+        <div id="enterInitials">
+          <p>Enter Initials: </p>
+          <input type="text" id="playerInitials">
+          <input type="submit" id="submitScore">
+        </div>
+      </section>
+      <section id="showHighScores">
+        <h1>High scores</h1>
+        <div id="highScoreList"></div>
+        <div id="highScoreOptions">
+          <button type="button" id="returnToStart">Go back</button>
+          <button type="button" id="clearScores">Clear high scores</button>
+        </div>
+      </section>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
