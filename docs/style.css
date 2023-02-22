@@ -1,7 +1,17 @@
+:root {
+    --buttonColor: #0f093b;
+}
+
 header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+button {
+    background-color: var(--buttonColor);
+    color: white;
+    border-radius: 5px;
 }
 
 #timer {
@@ -35,6 +45,7 @@ header {
 #answers button {
     text-align: left;
     min-width: 30%;
+    margin: 2px 0;
 }
 
 #quizFinished {
@@ -47,7 +58,26 @@ header {
     display: flex;
 }
 
-#showHighScores {
+#submitScore {
+    background-color: var(--buttonColor);
+    color: white;
+    border-radius: 5px;
+}
 
+#showHighScores ul li {
+    background-color: grey;
+    margin: 2px 0;
+    list-style: none;
+
+}
+
+button:hover {
+    background-color: #8c0ddb;
+    border-color: #8c0ddb;
+}
+
+#submitScore:hover {
+    background-color: #8c0ddb;
+    border-color: #8c0ddb;
 }
 
