@@ -20,6 +20,7 @@ function countdown() {
 
 //------------------------------------------------------------
 
+// Initialize variables for HTML elements
 var quizStartEl = document.getElementById("quizStart");
 var quizStartButton = document.getElementById("startQuizButton");
 var quizEl = document.getElementById("quiz");
@@ -35,8 +36,8 @@ var submitScoreEl = document.getElementById("submitScore");
 var finalScoreEl = document.getElementById("finalScore");
 var highScoreListDisplayEl = document.getElementById("highScoreListDisplay");
 
+// Retrieve high score array stored in local storage
 var storedHighScores = [];
-
 storedHighScores = JSON.parse(localStorage.getItem("highScoreList"));
 
 // Starting Screen
@@ -53,19 +54,15 @@ init();
 function clearQuizStart() {
     quizStartEl.style.display = "none";
 }
-
 function clearResults() {
     results.style.display = "none";
 }
-
 function clearQuizFinished() {
     quizFinishedEl.style.display = "none";
 }
-
 function clearQuiz() {
     quizEl.style.display = "none";
 }
-
 function clearShowHighScores() {
     showHighScoresEl.style.display = "none";
 }
@@ -73,23 +70,20 @@ function clearShowHighScores() {
 // Functions to Display Sections
 function displayQuiz() {
     quizEl.style.display = "flex";
-
 }
 function displayQuizStart() {
     quizStartEl.style.display = "flex";
 }
-
 function displayResult() {
     results.style.display = "block";
 }
-
 function displayQuizFinished() {
     quizFinishedEl.style.display = "flex";
 }
-
 function displayShowHighScores() {
     showHighScoresEl.style.display = "block";
 
+    // Output the List of High Scores in descending order
     for (var i = storedHighScores.length-1; i >= 0; i--) {
         var highScoreListItem = document.createElement("li");
         var highScoreListItemText = document.createTextNode(storedHighScores[i]);
@@ -98,8 +92,7 @@ function displayShowHighScores() {
     };
 }
 
-
-
+// Quiz Questions and Answers Section. Some coding logic was taken from example on https://www.codehim.com/vanilla-javascript/javascript-multiple-choice-questions-code/
 var currentQuestion = 0;
 var scoreCounter = 0;
 
@@ -160,6 +153,7 @@ function checkAnswer(i, choicesArray) {
     }
 }
 
+// Logic for button clicks
 quizStartButton.addEventListener("click",function() {
     clearQuizStart();
     currentQuestion = 0;
