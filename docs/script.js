@@ -37,8 +37,12 @@ var finalScoreEl = document.getElementById("finalScore");
 var highScoreListDisplayEl = document.getElementById("highScoreListDisplay");
 
 // Retrieve high score array stored in local storage
-var storedHighScores = [];
+
 storedHighScores = JSON.parse(localStorage.getItem("highScoreList"));
+
+if (storedHighScores === null) {
+    storedHighScores = [];
+};
 
 // Starting Screen
 function init() {
