@@ -33,6 +33,7 @@ var correctAnswerEl = document.getElementById("correctAnswer");
 var wrongAnswerEl = document.getElementById("wrongAnswer");
 var submitScoreEl = document.getElementById("submitScore");
 var finalScoreEl = document.getElementById("finalScore");
+var highScoreListDisplayEl = document.getElementById("highScoreListDisplay");
 
 var storedHighScores = [];
 
@@ -88,6 +89,13 @@ function displayQuizFinished() {
 
 function displayShowHighScores() {
     showHighScoresEl.style.display = "block";
+
+    for (var i = storedHighScores.length-1; i >= 0; i--) {
+        var highScoreListItem = document.createElement("li");
+        var highScoreListItemText = document.createTextNode(storedHighScores[i]);
+        highScoreListItem.appendChild(highScoreListItemText);
+        highScoreListDisplayEl.appendChild(highScoreListItem);
+    };
 }
 
 
@@ -166,9 +174,9 @@ quizStartButton.addEventListener("click",function() {
 submitScoreEl.addEventListener("click",function(event) {
     event.preventDefault();
     var playerInitialsEl = document.getElementById("playerInitials").value;
-    storedHighScores.push(playerInitialsEl + " - " + scoreCounter);
+    storedHighScores.push(scoreCounter + " - " + playerInitialsEl);
     scoreCounter = 0;
-    localStorage.setItem("highScoreList", JSON.stringify(storedHighScores))
+    localStorage.setItem("highScoreList", JSON.stringify(storedHighScores.sort()));
     console.log(storedHighScores);
     init();
     displayQuizStart();
@@ -176,5 +184,20 @@ submitScoreEl.addEventListener("click",function(event) {
 
 goBackButton.addEventListener("click",function() {
     displayQuizStart();
+    clearShowHighScores();
 });
 
+viewHighScoresEl.addEventListener("click",function() {
+    highScoreListDisplayEl.innerHTML = "";
+    clearQuiz();
+    clearQuizFinished();
+    clearQuizStart();
+    clearResults();
+    displayShowHighScores();
+});
+
+clearScoresButton.addEventListener("click",function() {
+    storedHighScores = [];
+    localStorage.setItem("highScoreList", JSON.stringify(storedHighScores));
+    highScoreListDisplayEl.innerHTML = "";
+});
